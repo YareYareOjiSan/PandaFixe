@@ -1,0 +1,25 @@
+tree "Root"
+	fallback
+		tree "Troubles"
+		tree "EyePlayer"
+		tree "Patrol"
+
+tree ("EyePlayer")
+	sequence
+		fallback
+			LineOfSightToPlayer
+			hasViewedPlayer
+		MoveTowardsPlayer
+		mute IsInPlayerPosition
+
+
+tree ("Troubles")
+	while isTroubled
+		sequence
+			Wait(30.0)
+			StopTrouble
+	
+tree ("Patrol")
+	fallback
+		IsMoving
+		RandomMove
